@@ -1,4 +1,4 @@
-from common import MessageResource
+from .common import MessageResource
 
 
 class SPD3303X(MessageResource):
