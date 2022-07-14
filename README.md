@@ -17,8 +17,8 @@ sa.reset()
 # Setup
 sa.span = 500e6
 sa.freq_center = 2.4e9
-sa.rbw = Bandwidth.MHZ_1
-sa.vbw = Bandwidth.KHZ_100
+sa.rbw = Bandwidth(1e6)
+sa.vbw = Bandwidth(100e3)
 sa.attenuation = 0
 sa.preamp = True
 
