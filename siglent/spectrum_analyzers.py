@@ -1,6 +1,6 @@
 from enum import Enum
 import numpy as np
-from common import MessageResource
+from .common import MessageResource
 
 
 class Bandwidth(Enum):
