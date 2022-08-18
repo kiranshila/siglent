@@ -1,0 +1,1177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>siglent.spectrum_analyzers API documentation</title>
+<meta name="description" content="Spectrum analyzers …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>siglent.spectrum_analyzers</code></h1>
+</header>
+<section id="section-intro">
+<p>Spectrum analyzers.</p>
+<h1 id="ssa3000x">SSA3000X</h1>
+<p>Supports:
+- SSA3000X Plus</p>
+<p>and</p>
+<ul>
+<li>SSA3000X-R</li>
+<li>SVA1000X</li>
+</ul>
+<p>in Spectrum Analyzer mode.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Spectrum analyzers.
+
+# SSA3000X
+Supports:
+- SSA3000X Plus
+
+and
+
+- SSA3000X-R
+- SVA1000X
+
+in Spectrum Analyzer mode.
+
+&#34;&#34;&#34;
+
+from enum import Enum
+from typing import List
+
+from .common import MessageResource
+
+# Fixed for every SA in this series
+NUM_DATA_POINTS = 751
+
+
+class Bandwidth(Enum):
+    &#34;&#34;&#34;The discrete bandwidth values for Resolution and Video Bandwidth.&#34;&#34;&#34;
+
+    HZ_1 = 1
+    HZ_3 = 3
+    HZ_10 = 10
+    HZ_30 = 30
+    HZ_100 = 100
+    HZ_300 = 30
+    KHZ_1 = 1e3
+    KHZ_3 = 3e3
+    KHZ_10 = 10e3
+    KHZ_30 = 30e3
+    KHZ_100 = 100e3
+    KHZ_300 = 300e3
+    MHZ_1 = 1e6
+
+
+class AverageType(Enum):
+    &#34;&#34;&#34;Trace averaging type.&#34;&#34;&#34;
+
+    LOG_POWER = &#34;LOGP&#34;
+    POWER = &#34;POW&#34;
+    VOLTAGE = &#34;VOLT&#34;
+
+
+class TraceMode(Enum):
+    &#34;&#34;&#34;Trace display mode.
+
+    Values
+    ------
+    * WRITE - Continuously update
+    * MAX_HOLD - Store the maximum value of each point
+    * MIN_HOLD - Store the minimum value of each point
+    * VIEW - Display the last recorded point, don&#39;t update
+    * AVERAGE - Turn on trace averaging
+    &#34;&#34;&#34;
+
+    WRITE = &#34;WRIT&#34;
+    MAX_HOLD = &#34;MAXH&#34;
+    MIN_HOLD = &#34;MINH&#34;
+    VIEW = &#34;VIEW&#34;
+    AVERAGE = &#34;AVER&#34;
+
+
+class DetectionMode(Enum):
+    &#34;&#34;&#34;Trace detection mode.
+
+    Values
+    ------
+    * NEGATIVE - Negative peak detection displays the lowest sample taken during
+    the interval being displayed.
+    * POSITIVE - Positive peak detection displays the highest sample taken during
+    the interval being displayed.
+    * SAMPLE - Sample detection displays the sample taken during the interval being
+    displayed, and is used primarily to display noise or noise-like signals.
+    In sample mode, the instantaneous signal value at the present display point is
+    placed into memory. This detection should not be used to make the most accurate
+    amplitude measurement of non noise-like signals.
+    * AVERAGE - Average detection is used when measuring the average value of the
+    amplitude across each trace interval (bucket). The averaging method used by the
+    average detector is set to either video or power as appropriate when the average
+    type is auto coupled.
+    * NORMAL - Normal detection selects the maximum and minimum video signal values
+    alternately. When selecting Normal detection,”Norm”appears in the upper-left corner.
+    * QUASI - Quasipeak detection is a form of detection where a signal level is
+    weighted based on the repetition frequency of the spectral components making up the
+    signal. That is to say, the result of a quasi-peak measurement depends on the
+    repetition rate of the signal.
+    &#34;&#34;&#34;
+
+    NEGATIVE = &#34;NEG&#34;
+    POSITIVE = &#34;POS&#34;
+    SAMPLE = &#34;SAMP&#34;
+    AVERAGE = &#34;AVER&#34;
+    NORMAL = &#34;NORMAL&#34;
+    QUASI = &#34;QUAS&#34;
+
+
+class SSA3000X(MessageResource):
+    &#34;&#34;&#34;The class to control a SSA3000X-Series spectrum analyzer.&#34;&#34;&#34;
+
+    @property
+    def ref_level(self) -&gt; float:
+        &#34;&#34;&#34;Get the reference level in dBm.&#34;&#34;&#34;
+        return float(self._resource.query(&#34;:DISP:WIND:TRAC:Y:RLEV?&#34;))
+
+    # ----- Display -----
+
+    @ref_level.setter
+    def ref_level(self, level_dbm: float):
+        &#34;&#34;&#34;Set the reference level to the specified value in dBm.&#34;&#34;&#34;
+        assert -100 &lt;= level_dbm &lt;= 30, &#34;Level must be between -100 and 30 dBm&#34;
+        self._resource.write(f&#34;:DISP:WIND:TRAC:Y:RLEV {level_dbm} DBM&#34;)
+
+    # ----- Frequency -----
+
+    @property
+    def span(self) -&gt; float:
+        &#34;&#34;&#34;Get the current span in Hz.&#34;&#34;&#34;
+        return float(self._resource.query(&#34;:FREQ:SPAN?&#34;))
+
+    @span.setter
+    def span(self, freq_hz: float):
+        &#34;&#34;&#34;Set the span in Hz.&#34;&#34;&#34;
+        assert (100 &lt;= freq_hz &lt;= 3.2e9) or (
+            freq_hz == 0
+        ), &#34;Span must be between 100 Hz and 3.2 GHz or 0&#34;
+        self._resource.write(f&#34;:FREQ:SPAN {freq_hz} Hz&#34;)
+
+    @property
+    def freq_center(self) -&gt; float:
+        &#34;&#34;&#34;Get the center frequency in Hz.&#34;&#34;&#34;
+        return float(self._resource.query(&#34;:FREQ:CENT?&#34;))
+
+    @freq_center.setter
+    def freq_center(self, freq_hz: float):
+        &#34;&#34;&#34;Set the center frequency in Hz.&#34;&#34;&#34;
+        assert 0 &lt;= freq_hz &lt;= 3.2e9, &#34;Center frequency must be between 0 and 3.2 GHz&#34;
+        self._resource.write(f&#34;:FREQ:CENT {freq_hz} Hz&#34;)
+
+    @property
+    def freq_start(self) -&gt; float:
+        &#34;&#34;&#34;Get the start frequency in Hz.&#34;&#34;&#34;
+        return float(self._resource.query(&#34;:FREQ:STAR?&#34;))
+
+    @property
+    def freq_stop(self) -&gt; float:
+        &#34;&#34;&#34;Get the stop frequency in Hz.&#34;&#34;&#34;
+        return float(self._resource.query(&#34;:FREQ:STOP?&#34;))
+
+    @freq_stop.setter
+    def freq_stop(self, freq_hz: float):
+        &#34;&#34;&#34;Set the stop frequency in Hz.&#34;&#34;&#34;
+        assert 0 &lt;= freq_hz &lt;= 3.2e9, &#34;Stop frequency must be between 0 and 3.2 GHz&#34;
+        self._resource.write(f&#34;:FREQ:STOP {freq_hz} Hz&#34;)
+
+    @property
+    def freq_step(self) -&gt; float:
+        &#34;&#34;&#34;Get the current frequency step size (controlled by span).&#34;&#34;&#34;
+        return float(self._resource.query(&#34;:FREQ:CENT:STEP?&#34;))
+
+    # ----- Power -----
+
+    @property
+    def attenuation(self) -&gt; float:
+        &#34;&#34;&#34;Get the current attenuation level in dB.&#34;&#34;&#34;
+        return float(self._resource.query(&#34;:POW:ATT?&#34;))
+
+    @attenuation.setter
+    def attenuation(self, db: float):
+        &#34;&#34;&#34;Set the attenuation level between 0 and 51 dB.&#34;&#34;&#34;
+        assert 0 &lt;= db &lt;= 51, &#34;Attenuation must be between 0 and 51 dB&#34;
+        self._resource.write(f&#34;:POW:ATT {db}&#34;)
+
+    @property
+    def preamp(self) -&gt; bool:
+        &#34;&#34;&#34;Get the status of the internal preamp. Returns true if active.&#34;&#34;&#34;
+        return self._resource.query(&#34;POW:GAIN?&#34;).strip() == &#34;1&#34;
+
+    @preamp.setter
+    def preamp(self, enabled: bool):
+        &#34;&#34;&#34;Set the internal preamp state to `enabled`.&#34;&#34;&#34;
+        self._resource.write(f&#34;:POW:GAIN {&#39;ON&#39; if enabled else &#39;OFF&#39;}&#34;)
+
+    # ----- Bandwidth -----
+
+    @property
+    def rbw(self) -&gt; Bandwidth:
+        &#34;&#34;&#34;Get the resolution bandwidth.&#34;&#34;&#34;
+        return Bandwidth(float(self._resource.query(&#34;:BWID?&#34;)))
+
+    @rbw.setter
+    def rbw(self, bw: Bandwidth):
+        &#34;&#34;&#34;Set the resolution bandwidth.&#34;&#34;&#34;
+        self._resource.write(f&#34;:BWID {bw.value}&#34;)
+
+    @property
+    def vbw(self) -&gt; Bandwidth:
+        &#34;&#34;&#34;Get the video bandwidth.&#34;&#34;&#34;
+        return Bandwidth(float(self._resource.query(&#34;:BWID:VID?&#34;)))
+
+    @vbw.setter
+    def vbw(self, bw: Bandwidth):
+        &#34;&#34;&#34;Set the video bandwidth.&#34;&#34;&#34;
+        self._resource.write(f&#34;:BWID:VID {bw.value}&#34;)
+
+    @property
+    def average_type(self) -&gt; AverageType:
+        &#34;&#34;&#34;Get the average type.&#34;&#34;&#34;
+        return AverageType(self._resource.query(&#34;:AVER:TYPE?&#34;).strip())
+
+    @average_type.setter
+    def average_type(self, type: AverageType):
+        &#34;&#34;&#34;Set the average type.&#34;&#34;&#34;
+        self._resource.write(f&#34;:AVER:TYPE {type.value}&#34;)
+
+    # ----- Trace -----
+
+    @property
+    def sweep_time(self) -&gt; float:
+        &#34;&#34;&#34;Get the current sweep time in seconds.&#34;&#34;&#34;
+        return float(self._resource.query(&#34;:SWE:TIME?&#34;))
+
+    @sweep_time.setter
+    def sweep_time(self, time: float):
+        &#34;&#34;&#34;Set the sweep time to a value from 450us to 1.5ks.&#34;&#34;&#34;
+        assert 450e-6 &lt;= time &lt;= 1.5e3, &#34;Time must be between 450us and 1.5ks&#34;
+        self._resource.write(f&#34;:SWE:TIME {time}s&#34;)
+
+    def sweep_restart(self):
+        &#34;&#34;&#34;Retsart the current sweep.&#34;&#34;&#34;
+        self._resource.write(&#34;:INIT:REST&#34;)
+
+    def trace(self, trace: int) -&gt; &#34;Trace&#34;:
+        &#34;&#34;&#34;Get the trace object from the SA.&#34;&#34;&#34;
+        assert 1 &lt;= trace &lt;= 4, &#34;Trace is either 1,2,3, or 4&#34;
+        return self.Trace(self, trace)
+
+    class Trace:
+        &#34;&#34;&#34;The trace object for one of the four available traces.&#34;&#34;&#34;
+
+        def __init__(self, parent: &#34;SSA3000X&#34;, n: int):
+            self._n = n
+            self._parent = parent
+            self._resource = parent._resource
+            # Set the trace output to binary data (64-bit real values)
+            self._resource.write(&#34;:FORM REAL&#34;)
+
+        @property
+        def mode(self) -&gt; TraceMode:
+            &#34;&#34;&#34;Get the current trace mode.&#34;&#34;&#34;
+            return TraceMode(self._resource.query(f&#34;:TRAC{self._n}:MODE?&#34;).strip())
+
+        @mode.setter
+        def mode(self, mode: TraceMode):
+            &#34;&#34;&#34;Set the trace mode.&#34;&#34;&#34;
+            self._resource.write(f&#34;:TRAC{self._n}:MODE {mode.value}&#34;)
+
+        @property
+        def averages(self) -&gt; int:
+            &#34;&#34;&#34;Get the number of averages.&#34;&#34;&#34;
+            return int(self._resource.query(f&#34;:AVER:TRAC{self._n}:COUN?&#34;))
+
+        @averages.setter
+        def averages(self, n: int):
+            &#34;&#34;&#34;Set the number of averages (Between 1 and 999).&#34;&#34;&#34;
+            assert 1 &lt;= n &lt;= 999, &#34;n must be between 1 and 999&#34;
+            self._resource.write(f&#34;:AVER:TRAC{self._n}:COUN {n}&#34;)
+
+        @property
+        def current_averages(self) -&gt; int:
+            &#34;&#34;&#34;Get the current number of averages.&#34;&#34;&#34;
+            return int(self._resource.query(f&#34;:AVER:TRAC{self._n}?&#34;))
+
+        def average_restart(self):
+            &#34;&#34;&#34;Restart trace averaging.&#34;&#34;&#34;
+            self._resource.write(f&#34;:AVER:TRAC{self._n}:CLE&#34;)
+
+        @property
+        def detection_mode(self) -&gt; DetectionMode:
+            &#34;&#34;&#34;Get the current trace detection mode.&#34;&#34;&#34;
+            return DetectionMode(self._resource.query(f&#34;:DET:TRAC{self._n}?&#34;).strip())
+
+        @detection_mode.setter
+        def detection_mode(self, mode: DetectionMode):
+            &#34;&#34;&#34;Set the trace detection mode.&#34;&#34;&#34;
+            self.resource.write(f&#34;:DET:TRAC{self._n} {mode.value}&#34;)
+
+        @property
+        def data(self) -&gt; List[float]:
+            &#34;&#34;&#34;
+            Get a list of the data point of the *currently displayed* trace.
+
+            The units of this data is dependent of the current configuration.
+            This will force a retrigger of the measurement and wait the sweep time
+            before returning a result.
+            &#34;&#34;&#34;
+            self._parent.sweep_restart()
+            self._parent.block_until_complete()
+            # Siglent seems to be sending little endian, this is mysteriously
+            # undocumented. Additionally, there is no header and we know
+            # the number of points as this is fixed
+            return self._resource.query_binary_values(
+                f&#34;TRAC:DATA? {self._n}&#34;,
+                datatype=&#34;d&#34;,
+                header_fmt=&#34;empty&#34;,
+                data_points=NUM_DATA_POINTS,
+            )</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="siglent.spectrum_analyzers.AverageType"><code class="flex name class">
+<span>class <span class="ident">AverageType</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Trace averaging type.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AverageType(Enum):
+    &#34;&#34;&#34;Trace averaging type.&#34;&#34;&#34;
+
+    LOG_POWER = &#34;LOGP&#34;
+    POWER = &#34;POW&#34;
+    VOLTAGE = &#34;VOLT&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="siglent.spectrum_analyzers.AverageType.LOG_POWER"><code class="name">var <span class="ident">LOG_POWER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="siglent.spectrum_analyzers.AverageType.POWER"><code class="name">var <span class="ident">POWER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="siglent.spectrum_analyzers.AverageType.VOLTAGE"><code class="name">var <span class="ident">VOLTAGE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="siglent.spectrum_analyzers.Bandwidth"><code class="flex name class">
+<span>class <span class="ident">Bandwidth</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The discrete bandwidth values for Resolution and Video Bandwidth.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Bandwidth(Enum):
+    &#34;&#34;&#34;The discrete bandwidth values for Resolution and Video Bandwidth.&#34;&#34;&#34;
+
+    HZ_1 = 1
+    HZ_3 = 3
+    HZ_10 = 10
+    HZ_30 = 30
+    HZ_100 = 100
+    HZ_300 = 30
+    KHZ_1 = 1e3
+    KHZ_3 = 3e3
+    KHZ_10 = 10e3
+    KHZ_30 = 30e3
+    KHZ_100 = 100e3
+    KHZ_300 = 300e3
+    MHZ_1 = 1e6</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="siglent.spectrum_analyzers.Bandwidth.HZ_1"><code class="name">var <span class="ident">HZ_1</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="siglent.spectrum_analyzers.Bandwidth.HZ_10"><code class="name">var <span class="ident">HZ_10</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="siglent.spectrum_analyzers.Bandwidth.HZ_100"><code class="name">var <span class="ident">HZ_100</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="siglent.spectrum_analyzers.Bandwidth.HZ_3"><code class="name">var <span class="ident">HZ_3</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="siglent.spectrum_analyzers.Bandwidth.HZ_30"><code class="name">var <span class="ident">HZ_30</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="siglent.spectrum_analyzers.Bandwidth.HZ_300"><code class="name">var <span class="ident">HZ_300</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="siglent.spectrum_analyzers.Bandwidth.KHZ_1"><code class="name">var <span class="ident">KHZ_1</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="siglent.spectrum_analyzers.Bandwidth.KHZ_10"><code class="name">var <span class="ident">KHZ_10</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="siglent.spectrum_analyzers.Bandwidth.KHZ_100"><code class="name">var <span class="ident">KHZ_100</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="siglent.spectrum_analyzers.Bandwidth.KHZ_3"><code class="name">var <span class="ident">KHZ_3</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="siglent.spectrum_analyzers.Bandwidth.KHZ_30"><code class="name">var <span class="ident">KHZ_30</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="siglent.spectrum_analyzers.Bandwidth.KHZ_300"><code class="name">var <span class="ident">KHZ_300</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="siglent.spectrum_analyzers.Bandwidth.MHZ_1"><code class="name">var <span class="ident">MHZ_1</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="siglent.spectrum_analyzers.DetectionMode"><code class="flex name class">
+<span>class <span class="ident">DetectionMode</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Trace detection mode.</p>
+<h2 id="values">Values</h2>
+<ul>
+<li>NEGATIVE - Negative peak detection displays the lowest sample taken during
+the interval being displayed.</li>
+<li>POSITIVE - Positive peak detection displays the highest sample taken during
+the interval being displayed.</li>
+<li>SAMPLE - Sample detection displays the sample taken during the interval being
+displayed, and is used primarily to display noise or noise-like signals.
+In sample mode, the instantaneous signal value at the present display point is
+placed into memory. This detection should not be used to make the most accurate
+amplitude measurement of non noise-like signals.</li>
+<li>AVERAGE - Average detection is used when measuring the average value of the
+amplitude across each trace interval (bucket). The averaging method used by the
+average detector is set to either video or power as appropriate when the average
+type is auto coupled.</li>
+<li>NORMAL - Normal detection selects the maximum and minimum video signal values
+alternately. When selecting Normal detection,”Norm”appears in the upper-left corner.</li>
+<li>QUASI - Quasipeak detection is a form of detection where a signal level is
+weighted based on the repetition frequency of the spectral components making up the
+signal. That is to say, the result of a quasi-peak measurement depends on the
+repetition rate of the signal.</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DetectionMode(Enum):
+    &#34;&#34;&#34;Trace detection mode.
+
+    Values
+    ------
+    * NEGATIVE - Negative peak detection displays the lowest sample taken during
+    the interval being displayed.
+    * POSITIVE - Positive peak detection displays the highest sample taken during
+    the interval being displayed.
+    * SAMPLE - Sample detection displays the sample taken during the interval being
+    displayed, and is used primarily to display noise or noise-like signals.
+    In sample mode, the instantaneous signal value at the present display point is
+    placed into memory. This detection should not be used to make the most accurate
+    amplitude measurement of non noise-like signals.
+    * AVERAGE - Average detection is used when measuring the average value of the
+    amplitude across each trace interval (bucket). The averaging method used by the
+    average detector is set to either video or power as appropriate when the average
+    type is auto coupled.
+    * NORMAL - Normal detection selects the maximum and minimum video signal values
+    alternately. When selecting Normal detection,”Norm”appears in the upper-left corner.
+    * QUASI - Quasipeak detection is a form of detection where a signal level is
+    weighted based on the repetition frequency of the spectral components making up the
+    signal. That is to say, the result of a quasi-peak measurement depends on the
+    repetition rate of the signal.
+    &#34;&#34;&#34;
+
+    NEGATIVE = &#34;NEG&#34;
+    POSITIVE = &#34;POS&#34;
+    SAMPLE = &#34;SAMP&#34;
+    AVERAGE = &#34;AVER&#34;
+    NORMAL = &#34;NORMAL&#34;
+    QUASI = &#34;QUAS&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="siglent.spectrum_analyzers.DetectionMode.AVERAGE"><code class="name">var <span class="ident">AVERAGE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="siglent.spectrum_analyzers.DetectionMode.NEGATIVE"><code class="name">var <span class="ident">NEGATIVE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="siglent.spectrum_analyzers.DetectionMode.NORMAL"><code class="name">var <span class="ident">NORMAL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="siglent.spectrum_analyzers.DetectionMode.POSITIVE"><code class="name">var <span class="ident">POSITIVE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="siglent.spectrum_analyzers.DetectionMode.QUASI"><code class="name">var <span class="ident">QUASI</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="siglent.spectrum_analyzers.DetectionMode.SAMPLE"><code class="name">var <span class="ident">SAMPLE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="siglent.spectrum_analyzers.SSA3000X"><code class="flex name class">
+<span>class <span class="ident">SSA3000X</span></span>
+<span>(</span><span>visa_address: str, rm: pyvisa.highlevel.ResourceManager)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The class to control a SSA3000X-Series spectrum analyzer.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SSA3000X(MessageResource):
+    &#34;&#34;&#34;The class to control a SSA3000X-Series spectrum analyzer.&#34;&#34;&#34;
+
+    @property
+    def ref_level(self) -&gt; float:
+        &#34;&#34;&#34;Get the reference level in dBm.&#34;&#34;&#34;
+        return float(self._resource.query(&#34;:DISP:WIND:TRAC:Y:RLEV?&#34;))
+
+    # ----- Display -----
+
+    @ref_level.setter
+    def ref_level(self, level_dbm: float):
+        &#34;&#34;&#34;Set the reference level to the specified value in dBm.&#34;&#34;&#34;
+        assert -100 &lt;= level_dbm &lt;= 30, &#34;Level must be between -100 and 30 dBm&#34;
+        self._resource.write(f&#34;:DISP:WIND:TRAC:Y:RLEV {level_dbm} DBM&#34;)
+
+    # ----- Frequency -----
+
+    @property
+    def span(self) -&gt; float:
+        &#34;&#34;&#34;Get the current span in Hz.&#34;&#34;&#34;
+        return float(self._resource.query(&#34;:FREQ:SPAN?&#34;))
+
+    @span.setter
+    def span(self, freq_hz: float):
+        &#34;&#34;&#34;Set the span in Hz.&#34;&#34;&#34;
+        assert (100 &lt;= freq_hz &lt;= 3.2e9) or (
+            freq_hz == 0
+        ), &#34;Span must be between 100 Hz and 3.2 GHz or 0&#34;
+        self._resource.write(f&#34;:FREQ:SPAN {freq_hz} Hz&#34;)
+
+    @property
+    def freq_center(self) -&gt; float:
+        &#34;&#34;&#34;Get the center frequency in Hz.&#34;&#34;&#34;
+        return float(self._resource.query(&#34;:FREQ:CENT?&#34;))
+
+    @freq_center.setter
+    def freq_center(self, freq_hz: float):
+        &#34;&#34;&#34;Set the center frequency in Hz.&#34;&#34;&#34;
+        assert 0 &lt;= freq_hz &lt;= 3.2e9, &#34;Center frequency must be between 0 and 3.2 GHz&#34;
+        self._resource.write(f&#34;:FREQ:CENT {freq_hz} Hz&#34;)
+
+    @property
+    def freq_start(self) -&gt; float:
+        &#34;&#34;&#34;Get the start frequency in Hz.&#34;&#34;&#34;
+        return float(self._resource.query(&#34;:FREQ:STAR?&#34;))
+
+    @property
+    def freq_stop(self) -&gt; float:
+        &#34;&#34;&#34;Get the stop frequency in Hz.&#34;&#34;&#34;
+        return float(self._resource.query(&#34;:FREQ:STOP?&#34;))
+
+    @freq_stop.setter
+    def freq_stop(self, freq_hz: float):
+        &#34;&#34;&#34;Set the stop frequency in Hz.&#34;&#34;&#34;
+        assert 0 &lt;= freq_hz &lt;= 3.2e9, &#34;Stop frequency must be between 0 and 3.2 GHz&#34;
+        self._resource.write(f&#34;:FREQ:STOP {freq_hz} Hz&#34;)
+
+    @property
+    def freq_step(self) -&gt; float:
+        &#34;&#34;&#34;Get the current frequency step size (controlled by span).&#34;&#34;&#34;
+        return float(self._resource.query(&#34;:FREQ:CENT:STEP?&#34;))
+
+    # ----- Power -----
+
+    @property
+    def attenuation(self) -&gt; float:
+        &#34;&#34;&#34;Get the current attenuation level in dB.&#34;&#34;&#34;
+        return float(self._resource.query(&#34;:POW:ATT?&#34;))
+
+    @attenuation.setter
+    def attenuation(self, db: float):
+        &#34;&#34;&#34;Set the attenuation level between 0 and 51 dB.&#34;&#34;&#34;
+        assert 0 &lt;= db &lt;= 51, &#34;Attenuation must be between 0 and 51 dB&#34;
+        self._resource.write(f&#34;:POW:ATT {db}&#34;)
+
+    @property
+    def preamp(self) -&gt; bool:
+        &#34;&#34;&#34;Get the status of the internal preamp. Returns true if active.&#34;&#34;&#34;
+        return self._resource.query(&#34;POW:GAIN?&#34;).strip() == &#34;1&#34;
+
+    @preamp.setter
+    def preamp(self, enabled: bool):
+        &#34;&#34;&#34;Set the internal preamp state to `enabled`.&#34;&#34;&#34;
+        self._resource.write(f&#34;:POW:GAIN {&#39;ON&#39; if enabled else &#39;OFF&#39;}&#34;)
+
+    # ----- Bandwidth -----
+
+    @property
+    def rbw(self) -&gt; Bandwidth:
+        &#34;&#34;&#34;Get the resolution bandwidth.&#34;&#34;&#34;
+        return Bandwidth(float(self._resource.query(&#34;:BWID?&#34;)))
+
+    @rbw.setter
+    def rbw(self, bw: Bandwidth):
+        &#34;&#34;&#34;Set the resolution bandwidth.&#34;&#34;&#34;
+        self._resource.write(f&#34;:BWID {bw.value}&#34;)
+
+    @property
+    def vbw(self) -&gt; Bandwidth:
+        &#34;&#34;&#34;Get the video bandwidth.&#34;&#34;&#34;
+        return Bandwidth(float(self._resource.query(&#34;:BWID:VID?&#34;)))
+
+    @vbw.setter
+    def vbw(self, bw: Bandwidth):
+        &#34;&#34;&#34;Set the video bandwidth.&#34;&#34;&#34;
+        self._resource.write(f&#34;:BWID:VID {bw.value}&#34;)
+
+    @property
+    def average_type(self) -&gt; AverageType:
+        &#34;&#34;&#34;Get the average type.&#34;&#34;&#34;
+        return AverageType(self._resource.query(&#34;:AVER:TYPE?&#34;).strip())
+
+    @average_type.setter
+    def average_type(self, type: AverageType):
+        &#34;&#34;&#34;Set the average type.&#34;&#34;&#34;
+        self._resource.write(f&#34;:AVER:TYPE {type.value}&#34;)
+
+    # ----- Trace -----
+
+    @property
+    def sweep_time(self) -&gt; float:
+        &#34;&#34;&#34;Get the current sweep time in seconds.&#34;&#34;&#34;
+        return float(self._resource.query(&#34;:SWE:TIME?&#34;))
+
+    @sweep_time.setter
+    def sweep_time(self, time: float):
+        &#34;&#34;&#34;Set the sweep time to a value from 450us to 1.5ks.&#34;&#34;&#34;
+        assert 450e-6 &lt;= time &lt;= 1.5e3, &#34;Time must be between 450us and 1.5ks&#34;
+        self._resource.write(f&#34;:SWE:TIME {time}s&#34;)
+
+    def sweep_restart(self):
+        &#34;&#34;&#34;Retsart the current sweep.&#34;&#34;&#34;
+        self._resource.write(&#34;:INIT:REST&#34;)
+
+    def trace(self, trace: int) -&gt; &#34;Trace&#34;:
+        &#34;&#34;&#34;Get the trace object from the SA.&#34;&#34;&#34;
+        assert 1 &lt;= trace &lt;= 4, &#34;Trace is either 1,2,3, or 4&#34;
+        return self.Trace(self, trace)
+
+    class Trace:
+        &#34;&#34;&#34;The trace object for one of the four available traces.&#34;&#34;&#34;
+
+        def __init__(self, parent: &#34;SSA3000X&#34;, n: int):
+            self._n = n
+            self._parent = parent
+            self._resource = parent._resource
+            # Set the trace output to binary data (64-bit real values)
+            self._resource.write(&#34;:FORM REAL&#34;)
+
+        @property
+        def mode(self) -&gt; TraceMode:
+            &#34;&#34;&#34;Get the current trace mode.&#34;&#34;&#34;
+            return TraceMode(self._resource.query(f&#34;:TRAC{self._n}:MODE?&#34;).strip())
+
+        @mode.setter
+        def mode(self, mode: TraceMode):
+            &#34;&#34;&#34;Set the trace mode.&#34;&#34;&#34;
+            self._resource.write(f&#34;:TRAC{self._n}:MODE {mode.value}&#34;)
+
+        @property
+        def averages(self) -&gt; int:
+            &#34;&#34;&#34;Get the number of averages.&#34;&#34;&#34;
+            return int(self._resource.query(f&#34;:AVER:TRAC{self._n}:COUN?&#34;))
+
+        @averages.setter
+        def averages(self, n: int):
+            &#34;&#34;&#34;Set the number of averages (Between 1 and 999).&#34;&#34;&#34;
+            assert 1 &lt;= n &lt;= 999, &#34;n must be between 1 and 999&#34;
+            self._resource.write(f&#34;:AVER:TRAC{self._n}:COUN {n}&#34;)
+
+        @property
+        def current_averages(self) -&gt; int:
+            &#34;&#34;&#34;Get the current number of averages.&#34;&#34;&#34;
+            return int(self._resource.query(f&#34;:AVER:TRAC{self._n}?&#34;))
+
+        def average_restart(self):
+            &#34;&#34;&#34;Restart trace averaging.&#34;&#34;&#34;
+            self._resource.write(f&#34;:AVER:TRAC{self._n}:CLE&#34;)
+
+        @property
+        def detection_mode(self) -&gt; DetectionMode:
+            &#34;&#34;&#34;Get the current trace detection mode.&#34;&#34;&#34;
+            return DetectionMode(self._resource.query(f&#34;:DET:TRAC{self._n}?&#34;).strip())
+
+        @detection_mode.setter
+        def detection_mode(self, mode: DetectionMode):
+            &#34;&#34;&#34;Set the trace detection mode.&#34;&#34;&#34;
+            self.resource.write(f&#34;:DET:TRAC{self._n} {mode.value}&#34;)
+
+        @property
+        def data(self) -&gt; List[float]:
+            &#34;&#34;&#34;
+            Get a list of the data point of the *currently displayed* trace.
+
+            The units of this data is dependent of the current configuration.
+            This will force a retrigger of the measurement and wait the sweep time
+            before returning a result.
+            &#34;&#34;&#34;
+            self._parent.sweep_restart()
+            self._parent.block_until_complete()
+            # Siglent seems to be sending little endian, this is mysteriously
+            # undocumented. Additionally, there is no header and we know
+            # the number of points as this is fixed
+            return self._resource.query_binary_values(
+                f&#34;TRAC:DATA? {self._n}&#34;,
+                datatype=&#34;d&#34;,
+                header_fmt=&#34;empty&#34;,
+                data_points=NUM_DATA_POINTS,
+            )</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="siglent.common.MessageResource" href="common.html#siglent.common.MessageResource">MessageResource</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="siglent.spectrum_analyzers.SSA3000X.Trace"><code class="name">var <span class="ident">Trace</span></code></dt>
+<dd>
+<div class="desc"><p>The trace object for one of the four available traces.</p></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="siglent.spectrum_analyzers.SSA3000X.attenuation"><code class="name">var <span class="ident">attenuation</span> : float</code></dt>
+<dd>
+<div class="desc"><p>Get the current attenuation level in dB.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def attenuation(self) -&gt; float:
+    &#34;&#34;&#34;Get the current attenuation level in dB.&#34;&#34;&#34;
+    return float(self._resource.query(&#34;:POW:ATT?&#34;))</code></pre>
+</details>
+</dd>
+<dt id="siglent.spectrum_analyzers.SSA3000X.average_type"><code class="name">var <span class="ident">average_type</span> : <a title="siglent.spectrum_analyzers.AverageType" href="#siglent.spectrum_analyzers.AverageType">AverageType</a></code></dt>
+<dd>
+<div class="desc"><p>Get the average type.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def average_type(self) -&gt; AverageType:
+    &#34;&#34;&#34;Get the average type.&#34;&#34;&#34;
+    return AverageType(self._resource.query(&#34;:AVER:TYPE?&#34;).strip())</code></pre>
+</details>
+</dd>
+<dt id="siglent.spectrum_analyzers.SSA3000X.freq_center"><code class="name">var <span class="ident">freq_center</span> : float</code></dt>
+<dd>
+<div class="desc"><p>Get the center frequency in Hz.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def freq_center(self) -&gt; float:
+    &#34;&#34;&#34;Get the center frequency in Hz.&#34;&#34;&#34;
+    return float(self._resource.query(&#34;:FREQ:CENT?&#34;))</code></pre>
+</details>
+</dd>
+<dt id="siglent.spectrum_analyzers.SSA3000X.freq_start"><code class="name">var <span class="ident">freq_start</span> : float</code></dt>
+<dd>
+<div class="desc"><p>Get the start frequency in Hz.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def freq_start(self) -&gt; float:
+    &#34;&#34;&#34;Get the start frequency in Hz.&#34;&#34;&#34;
+    return float(self._resource.query(&#34;:FREQ:STAR?&#34;))</code></pre>
+</details>
+</dd>
+<dt id="siglent.spectrum_analyzers.SSA3000X.freq_step"><code class="name">var <span class="ident">freq_step</span> : float</code></dt>
+<dd>
+<div class="desc"><p>Get the current frequency step size (controlled by span).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def freq_step(self) -&gt; float:
+    &#34;&#34;&#34;Get the current frequency step size (controlled by span).&#34;&#34;&#34;
+    return float(self._resource.query(&#34;:FREQ:CENT:STEP?&#34;))</code></pre>
+</details>
+</dd>
+<dt id="siglent.spectrum_analyzers.SSA3000X.freq_stop"><code class="name">var <span class="ident">freq_stop</span> : float</code></dt>
+<dd>
+<div class="desc"><p>Get the stop frequency in Hz.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def freq_stop(self) -&gt; float:
+    &#34;&#34;&#34;Get the stop frequency in Hz.&#34;&#34;&#34;
+    return float(self._resource.query(&#34;:FREQ:STOP?&#34;))</code></pre>
+</details>
+</dd>
+<dt id="siglent.spectrum_analyzers.SSA3000X.preamp"><code class="name">var <span class="ident">preamp</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Get the status of the internal preamp. Returns true if active.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def preamp(self) -&gt; bool:
+    &#34;&#34;&#34;Get the status of the internal preamp. Returns true if active.&#34;&#34;&#34;
+    return self._resource.query(&#34;POW:GAIN?&#34;).strip() == &#34;1&#34;</code></pre>
+</details>
+</dd>
+<dt id="siglent.spectrum_analyzers.SSA3000X.rbw"><code class="name">var <span class="ident">rbw</span> : <a title="siglent.spectrum_analyzers.Bandwidth" href="#siglent.spectrum_analyzers.Bandwidth">Bandwidth</a></code></dt>
+<dd>
+<div class="desc"><p>Get the resolution bandwidth.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def rbw(self) -&gt; Bandwidth:
+    &#34;&#34;&#34;Get the resolution bandwidth.&#34;&#34;&#34;
+    return Bandwidth(float(self._resource.query(&#34;:BWID?&#34;)))</code></pre>
+</details>
+</dd>
+<dt id="siglent.spectrum_analyzers.SSA3000X.ref_level"><code class="name">var <span class="ident">ref_level</span> : float</code></dt>
+<dd>
+<div class="desc"><p>Get the reference level in dBm.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def ref_level(self) -&gt; float:
+    &#34;&#34;&#34;Get the reference level in dBm.&#34;&#34;&#34;
+    return float(self._resource.query(&#34;:DISP:WIND:TRAC:Y:RLEV?&#34;))</code></pre>
+</details>
+</dd>
+<dt id="siglent.spectrum_analyzers.SSA3000X.span"><code class="name">var <span class="ident">span</span> : float</code></dt>
+<dd>
+<div class="desc"><p>Get the current span in Hz.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def span(self) -&gt; float:
+    &#34;&#34;&#34;Get the current span in Hz.&#34;&#34;&#34;
+    return float(self._resource.query(&#34;:FREQ:SPAN?&#34;))</code></pre>
+</details>
+</dd>
+<dt id="siglent.spectrum_analyzers.SSA3000X.sweep_time"><code class="name">var <span class="ident">sweep_time</span> : float</code></dt>
+<dd>
+<div class="desc"><p>Get the current sweep time in seconds.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def sweep_time(self) -&gt; float:
+    &#34;&#34;&#34;Get the current sweep time in seconds.&#34;&#34;&#34;
+    return float(self._resource.query(&#34;:SWE:TIME?&#34;))</code></pre>
+</details>
+</dd>
+<dt id="siglent.spectrum_analyzers.SSA3000X.vbw"><code class="name">var <span class="ident">vbw</span> : <a title="siglent.spectrum_analyzers.Bandwidth" href="#siglent.spectrum_analyzers.Bandwidth">Bandwidth</a></code></dt>
+<dd>
+<div class="desc"><p>Get the video bandwidth.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def vbw(self) -&gt; Bandwidth:
+    &#34;&#34;&#34;Get the video bandwidth.&#34;&#34;&#34;
+    return Bandwidth(float(self._resource.query(&#34;:BWID:VID?&#34;)))</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="siglent.spectrum_analyzers.SSA3000X.sweep_restart"><code class="name flex">
+<span>def <span class="ident">sweep_restart</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Retsart the current sweep.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sweep_restart(self):
+    &#34;&#34;&#34;Retsart the current sweep.&#34;&#34;&#34;
+    self._resource.write(&#34;:INIT:REST&#34;)</code></pre>
+</details>
+</dd>
+<dt id="siglent.spectrum_analyzers.SSA3000X.trace"><code class="name flex">
+<span>def <span class="ident">trace</span></span>(<span>self, trace: int) ‑> Trace</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the trace object from the SA.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def trace(self, trace: int) -&gt; &#34;Trace&#34;:
+    &#34;&#34;&#34;Get the trace object from the SA.&#34;&#34;&#34;
+    assert 1 &lt;= trace &lt;= 4, &#34;Trace is either 1,2,3, or 4&#34;
+    return self.Trace(self, trace)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="siglent.common.MessageResource" href="common.html#siglent.common.MessageResource">MessageResource</a></b></code>:
+<ul class="hlist">
+<li><code><a title="siglent.common.MessageResource.block_until_complete" href="common.html#siglent.common.MessageResource.block_until_complete">block_until_complete</a></code></li>
+<li><code><a title="siglent.common.MessageResource.clear" href="common.html#siglent.common.MessageResource.clear">clear</a></code></li>
+<li><code><a title="siglent.common.MessageResource.identifier" href="common.html#siglent.common.MessageResource.identifier">identifier</a></code></li>
+<li><code><a title="siglent.common.MessageResource.reset" href="common.html#siglent.common.MessageResource.reset">reset</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="siglent.spectrum_analyzers.TraceMode"><code class="flex name class">
+<span>class <span class="ident">TraceMode</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Trace display mode.</p>
+<h2 id="values">Values</h2>
+<ul>
+<li>WRITE - Continuously update</li>
+<li>MAX_HOLD - Store the maximum value of each point</li>
+<li>MIN_HOLD - Store the minimum value of each point</li>
+<li>VIEW - Display the last recorded point, don't update</li>
+<li>AVERAGE - Turn on trace averaging</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TraceMode(Enum):
+    &#34;&#34;&#34;Trace display mode.
+
+    Values
+    ------
+    * WRITE - Continuously update
+    * MAX_HOLD - Store the maximum value of each point
+    * MIN_HOLD - Store the minimum value of each point
+    * VIEW - Display the last recorded point, don&#39;t update
+    * AVERAGE - Turn on trace averaging
+    &#34;&#34;&#34;
+
+    WRITE = &#34;WRIT&#34;
+    MAX_HOLD = &#34;MAXH&#34;
+    MIN_HOLD = &#34;MINH&#34;
+    VIEW = &#34;VIEW&#34;
+    AVERAGE = &#34;AVER&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="siglent.spectrum_analyzers.TraceMode.AVERAGE"><code class="name">var <span class="ident">AVERAGE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="siglent.spectrum_analyzers.TraceMode.MAX_HOLD"><code class="name">var <span class="ident">MAX_HOLD</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="siglent.spectrum_analyzers.TraceMode.MIN_HOLD"><code class="name">var <span class="ident">MIN_HOLD</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="siglent.spectrum_analyzers.TraceMode.VIEW"><code class="name">var <span class="ident">VIEW</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="siglent.spectrum_analyzers.TraceMode.WRITE"><code class="name">var <span class="ident">WRITE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul>
+<li><a href="#ssa3000x">SSA3000X</a></li>
+</ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="siglent" href="index.html">siglent</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="siglent.spectrum_analyzers.AverageType" href="#siglent.spectrum_analyzers.AverageType">AverageType</a></code></h4>
+<ul class="">
+<li><code><a title="siglent.spectrum_analyzers.AverageType.LOG_POWER" href="#siglent.spectrum_analyzers.AverageType.LOG_POWER">LOG_POWER</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.AverageType.POWER" href="#siglent.spectrum_analyzers.AverageType.POWER">POWER</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.AverageType.VOLTAGE" href="#siglent.spectrum_analyzers.AverageType.VOLTAGE">VOLTAGE</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="siglent.spectrum_analyzers.Bandwidth" href="#siglent.spectrum_analyzers.Bandwidth">Bandwidth</a></code></h4>
+<ul class="two-column">
+<li><code><a title="siglent.spectrum_analyzers.Bandwidth.HZ_1" href="#siglent.spectrum_analyzers.Bandwidth.HZ_1">HZ_1</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.Bandwidth.HZ_10" href="#siglent.spectrum_analyzers.Bandwidth.HZ_10">HZ_10</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.Bandwidth.HZ_100" href="#siglent.spectrum_analyzers.Bandwidth.HZ_100">HZ_100</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.Bandwidth.HZ_3" href="#siglent.spectrum_analyzers.Bandwidth.HZ_3">HZ_3</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.Bandwidth.HZ_30" href="#siglent.spectrum_analyzers.Bandwidth.HZ_30">HZ_30</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.Bandwidth.HZ_300" href="#siglent.spectrum_analyzers.Bandwidth.HZ_300">HZ_300</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.Bandwidth.KHZ_1" href="#siglent.spectrum_analyzers.Bandwidth.KHZ_1">KHZ_1</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.Bandwidth.KHZ_10" href="#siglent.spectrum_analyzers.Bandwidth.KHZ_10">KHZ_10</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.Bandwidth.KHZ_100" href="#siglent.spectrum_analyzers.Bandwidth.KHZ_100">KHZ_100</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.Bandwidth.KHZ_3" href="#siglent.spectrum_analyzers.Bandwidth.KHZ_3">KHZ_3</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.Bandwidth.KHZ_30" href="#siglent.spectrum_analyzers.Bandwidth.KHZ_30">KHZ_30</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.Bandwidth.KHZ_300" href="#siglent.spectrum_analyzers.Bandwidth.KHZ_300">KHZ_300</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.Bandwidth.MHZ_1" href="#siglent.spectrum_analyzers.Bandwidth.MHZ_1">MHZ_1</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="siglent.spectrum_analyzers.DetectionMode" href="#siglent.spectrum_analyzers.DetectionMode">DetectionMode</a></code></h4>
+<ul class="two-column">
+<li><code><a title="siglent.spectrum_analyzers.DetectionMode.AVERAGE" href="#siglent.spectrum_analyzers.DetectionMode.AVERAGE">AVERAGE</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.DetectionMode.NEGATIVE" href="#siglent.spectrum_analyzers.DetectionMode.NEGATIVE">NEGATIVE</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.DetectionMode.NORMAL" href="#siglent.spectrum_analyzers.DetectionMode.NORMAL">NORMAL</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.DetectionMode.POSITIVE" href="#siglent.spectrum_analyzers.DetectionMode.POSITIVE">POSITIVE</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.DetectionMode.QUASI" href="#siglent.spectrum_analyzers.DetectionMode.QUASI">QUASI</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.DetectionMode.SAMPLE" href="#siglent.spectrum_analyzers.DetectionMode.SAMPLE">SAMPLE</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="siglent.spectrum_analyzers.SSA3000X" href="#siglent.spectrum_analyzers.SSA3000X">SSA3000X</a></code></h4>
+<ul class="two-column">
+<li><code><a title="siglent.spectrum_analyzers.SSA3000X.Trace" href="#siglent.spectrum_analyzers.SSA3000X.Trace">Trace</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.SSA3000X.attenuation" href="#siglent.spectrum_analyzers.SSA3000X.attenuation">attenuation</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.SSA3000X.average_type" href="#siglent.spectrum_analyzers.SSA3000X.average_type">average_type</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.SSA3000X.freq_center" href="#siglent.spectrum_analyzers.SSA3000X.freq_center">freq_center</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.SSA3000X.freq_start" href="#siglent.spectrum_analyzers.SSA3000X.freq_start">freq_start</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.SSA3000X.freq_step" href="#siglent.spectrum_analyzers.SSA3000X.freq_step">freq_step</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.SSA3000X.freq_stop" href="#siglent.spectrum_analyzers.SSA3000X.freq_stop">freq_stop</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.SSA3000X.preamp" href="#siglent.spectrum_analyzers.SSA3000X.preamp">preamp</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.SSA3000X.rbw" href="#siglent.spectrum_analyzers.SSA3000X.rbw">rbw</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.SSA3000X.ref_level" href="#siglent.spectrum_analyzers.SSA3000X.ref_level">ref_level</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.SSA3000X.span" href="#siglent.spectrum_analyzers.SSA3000X.span">span</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.SSA3000X.sweep_restart" href="#siglent.spectrum_analyzers.SSA3000X.sweep_restart">sweep_restart</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.SSA3000X.sweep_time" href="#siglent.spectrum_analyzers.SSA3000X.sweep_time">sweep_time</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.SSA3000X.trace" href="#siglent.spectrum_analyzers.SSA3000X.trace">trace</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.SSA3000X.vbw" href="#siglent.spectrum_analyzers.SSA3000X.vbw">vbw</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="siglent.spectrum_analyzers.TraceMode" href="#siglent.spectrum_analyzers.TraceMode">TraceMode</a></code></h4>
+<ul class="">
+<li><code><a title="siglent.spectrum_analyzers.TraceMode.AVERAGE" href="#siglent.spectrum_analyzers.TraceMode.AVERAGE">AVERAGE</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.TraceMode.MAX_HOLD" href="#siglent.spectrum_analyzers.TraceMode.MAX_HOLD">MAX_HOLD</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.TraceMode.MIN_HOLD" href="#siglent.spectrum_analyzers.TraceMode.MIN_HOLD">MIN_HOLD</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.TraceMode.VIEW" href="#siglent.spectrum_analyzers.TraceMode.VIEW">VIEW</a></code></li>
+<li><code><a title="siglent.spectrum_analyzers.TraceMode.WRITE" href="#siglent.spectrum_analyzers.TraceMode.WRITE">WRITE</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
