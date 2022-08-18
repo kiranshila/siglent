@@ -60,11 +60,11 @@ jobs:
       # Install
       - run: poetry install --no-interaction
       # Test
-      - run: poetry run pytest --flake8
+      - run: poetry run flake8 siglent/
 
       # Build and deploy docs
-      - run: poetry run pydoc --html docs/ siglent
+      - run: poetry run pdoc --html siglent
       - name: Docs
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: docs
+          folder: html
