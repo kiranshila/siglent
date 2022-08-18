@@ -1,8 +1,18 @@
 # siglent
 
-A modern python library for interacting with Siglent-brand test equipment
+A modern python library for interacting with Siglent-brand test equipment.
 
-## Examaple
+## Installation
+
+Until published, install with
+
+```sh
+pip install -e git+git@github.com:kiranshila/siglent.git
+```
+
+Note: This requires at least Pip 19.0
+
+## Example
 
 ```python
 from pyvisa import ResourceManager

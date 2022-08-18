@@ -27,6 +27,84 @@ class AverageType(Enum):
     VOLTAGE = "VOLT"
 
 
+class TraceMode(Enum):
+    WRITE = "WRIT"
+    MAX_HOLD = "MAXH"
+    MIN_HOLD = "MINH"
+    VIEW = "VIEW"
+    AVERAGE = "AVER"
+
+
+class DetectionMode(Enum):
+    NEGATIVE = "NEG"
+    POSITIVE = "POS"
+    SAMPLE = "SAMP"
+    AVERAGE = "AVER"
+    NORMAL = "NORMAL"
+    QUASI = "QUAS"
+
+
+class Trace:
+    def __init__(self, parent: SSA3000X, n: int):
+        """Constructor for a trace object, don't call directly, use .trace()"""
+        self._n = n
+        self._parent = parent
+        self._resource = parent._resource
+
+    @property
+    def mode(self) -> TraceMode:
+        """Gets the current trace mode"""
+        return TraceMode(self._resource.query(f":TRAC{self._n}:MODE"))
+
+    @mode.setter
+    def mode(self, mode: TraceMode):
+        """Sets the trace mode"""
+        self._resource.write(f":TRAC{self._n}:MODE {mode.value}")
+
+    @property
+    def averages(self) -> int:
+        """Gets the number of averages"""
+        return self._resource.query(f":AVER:TRAC{self._n}:COUN")
+
+    @averages.setter
+    def averages(self, n: int):
+        """Sets the number of averages (Between 1 and 999)"""
+        assert 1 <= n <= 999, "n must be between 1 and 999"
+        self._resource.write(f":AVER:TRAC{self._n}:COUN {n}")
+
+    def current_averages(self) -> int:
+        """Gets the current number of averages"""
+        return self._resource.query(f":AVER:TRAC{self._n}")
+
+    def average_restart(self):
+        """Restarts trace averaging"""
+        self._resource.write(f":AVER:TRAC{self._n}:CLE")
+
+    @property
+    def detection_mode(self) -> DetectionMode:
+        """Gets the current trace detection mode"""
+        return DetectionMode(self._resource.query(f":DET:TRAC{self._n}"))
+
+    @detection_mode.setter
+    def detection_mode(self, mode: DetectionMode):
+        """Sets the trace detection mode"""
+        self.resource.write(f":DET:TRAC{self._n} {mode.value}")
+
+    def data(self) -> np.ndarray:
+        """
+        Gets a numpy array of the value of the selected trace.
+        The units of this data is dependent of the current configuration.
+        This will force a retrigger of the measurement and wait the sweep time
+        before returning a result.
+        """
+        self._parent.sweep_restart()
+        self._parent.block_until_complete()
+        # Set the trace output to binary data (64-bit real values)
+        self._resource.write(":FORM REAL")
+        res = self._resource.query(f"TRACE? {self._n}").strip()
+        return np.fromstring(res, sep=",")
+
+
 class SSA3000X(MessageResource):
     @property
     def ref_level(self) -> float:
@@ -161,16 +239,7 @@ class SSA3000X(MessageResource):
         """Retsarts the current sweep"""
         self._resource.write(":INIT:REST")
 
-    def trace(self, trace: int) -> np.ndarray:
-        """
-        Gets a numpy array of the value of `trace`
-        `trace` is one of 1,2,3,4
-        The units of this data is dependent of the current configuration.
-        This will force a retrigger of the measurement and wait the sweep time
-        before returning a result.
-        """
+    def trace(self, trace: int) -> Trace:
+        """Gets the trace object from the SA"""
         assert 1 <= trace <= 4, "Trace is either 1,2,3, or 4"
-        self.sweep_restart()
-        self.block_until_complete()
-        res = self._resource.query(f"TRACE? {trace}").strip()
-        return np.fromstring(res, sep=",")
+        return Trace(trace)
