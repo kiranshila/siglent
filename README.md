@@ -33,5 +33,5 @@ sa.attenuation = 0
 sa.preamp = True
 
 # Measure
-trace = sa.trace(1)
+trace = sa.trace(1).data
 ```

@@ -1,6 +1,9 @@
 from enum import Enum
-import numpy as np
 from .common import MessageResource
+from typing import List
+
+# Fixed for every SA in this series
+NUM_DATA_POINTS = 751
 
 
 class Bandwidth(Enum):
@@ -89,12 +92,6 @@ class SSA3000X(MessageResource):
         """Gets the start frequency in Hz"""
         return float(self._resource.query(":FREQ:STAR?"))
 
-    @freq_start.setter
-    def freq_start(self, freq_hz: float):
-        """Sets the start frequency in Hz"""
-        assert 0 <= freq_hz <= 3.2e9, "Start frequency must be between 0 and 3.2 GHz"
-        self._resource.write(f":FREQ:STAR {freq_hz} Hz")
-
     @property
     def freq_stop(self) -> float:
         """Gets the stop frequency in Hz"""
@@ -105,6 +102,11 @@ class SSA3000X(MessageResource):
         """Sets the stop frequency in Hz"""
         assert 0 <= freq_hz <= 3.2e9, "Stop frequency must be between 0 and 3.2 GHz"
         self._resource.write(f":FREQ:STOP {freq_hz} Hz")
+
+    @property
+    def freq_step(self) -> float:
+        """Gets the current frequency step size (controlled by span)"""
+        return float(self._resource.query(":FREQ:CENT:STEP?"))
 
     # ----- Power -----
 
@@ -189,6 +191,8 @@ class SSA3000X(MessageResource):
             self._n = n
             self._parent = parent
             self._resource = parent._resource
+            # Set the trace output to binary data (64-bit real values)
+            self._resource.write(":FORM REAL")
 
         @property
         def mode(self) -> TraceMode:
@@ -230,16 +234,21 @@ class SSA3000X(MessageResource):
             """Sets the trace detection mode"""
             self.resource.write(f":DET:TRAC{self._n} {mode.value}")
 
-        def data(self) -> np.ndarray:
+        @property
+        def data(self) -> List[float]:
             """
-            Gets a numpy array of the value of the selected trace.
+            Gets a list of the data point of the *currently displayed* trace.
             The units of this data is dependent of the current configuration.
             This will force a retrigger of the measurement and wait the sweep time
             before returning a result.
             """
             self._parent.sweep_restart()
             self._parent.block_until_complete()
-            # Set the trace output to binary data (64-bit real values)
-            self._resource.write(":FORM REAL")
-            res = self._resource.query(f"TRACE? {self._n}").strip()
-            return np.fromstring(res, sep=",")
+            # Siglent seems to be sending little endian, this is mysteriously undocumented
+            # Additionally, there is no header and we know the number of points as this is fixed
+            return self._resource.query_binary_values(
+                f"TRAC:DATA? {self._n}",
+                datatype="d",
+                header_fmt="empty",
+                data_points=NUM_DATA_POINTS,
+            )
