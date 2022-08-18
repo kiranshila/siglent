@@ -7,7 +7,7 @@ A modern python library for interacting with Siglent-brand test equipment.
 Until published, install with
 
 ```sh
-pip install -e git+git@github.com:kiranshila/siglent.git
+pip install -e git+https://github.com/kiranshila/siglent#egg=siglent
 ```
 
 Note: This requires at least Pip 19.0
