@@ -9,3 +9,6 @@ build
 htmlcov
 
 .venv/
+.vscode/
+.pytest_cache/
+.benchmarks/
