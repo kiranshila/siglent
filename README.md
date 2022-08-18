@@ -1,7 +1,7 @@
 # siglent
 
 ![GitHub](https://img.shields.io/github/license/kiranshila/siglent?style=flat-square)
-[![docs](https://img.shields.io/github/workflow/status/kiranshila/siglent/CI?style=flat-square)](https://kiranshila.github.io/siglent/)
+[![docs](https://img.shields.io/github/deployments/kiranshila/siglent/github-pages?label=docs&logo=python&style=flat-square)](https://kiranshila.github.io/siglent/)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/kiranshila/siglent/CI?style=flat-square)
 
 A modern python library for interacting with Siglent-brand test equipment.
