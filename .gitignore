@@ -12,3 +12,5 @@ htmlcov
 .vscode/
 .pytest_cache/
 .benchmarks/
+html/
+docs/

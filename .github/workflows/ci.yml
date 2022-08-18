@@ -11,7 +11,7 @@ jobs:
 
       # If you wanted to use multiple Python versions, you'd have specify a matrix in the job and
       # reference the matrixe python version here.
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v3
         with:
           python-version: 3.9
 
@@ -61,3 +61,10 @@ jobs:
       - run: poetry install --no-interaction
       # Test
       - run: poetry run pytest --flake8
+
+      # Build and deploy docs
+      - run: poetry run pydoc --html docs/ siglent
+      - name: Docs
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: docs
