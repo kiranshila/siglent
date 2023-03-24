@@ -360,7 +360,7 @@ class SSA3000X(MessageResource):
         @enabled.setter
         def enabled(self, enabled: bool):
             """Set the marker enabled state."""
-            self.resource.write(f":CALC:MARK{self._n}:STAT {int(enabled)}")
+            self._resource.write(f":CALC:MARK{self._n}:STAT {int(enabled)}")
 
         @property
         def mode(self) -> MarkerMode:
@@ -372,7 +372,7 @@ class SSA3000X(MessageResource):
         @mode.setter
         def mode(self, mode: MarkerMode):
             """Set the marker mode."""
-            self.resource.write(f":CALC:MARK{self._n}:MODE {mode.value}")
+            self._resource.write(f":CALC:MARK{self._n}:MODE {mode.value}")
 
         @property
         def trace(self) -> int:
@@ -382,7 +382,7 @@ class SSA3000X(MessageResource):
         @enabled.setter
         def trace(self, trace: int):
             """Set which trace this marker is on."""
-            self.resource.write(f":CALC:MARK{self._n}:TRAC {trace}")
+            self._resource.write(f":CALC:MARK{self._n}:TRAC {trace}")
 
         def peak(self):
             """Performs a peak search based on the current search mode settings"""
