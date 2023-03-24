@@ -355,7 +355,7 @@ class SSA3000X(MessageResource):
         @property
         def enabled(self) -> bool:
             """Get the marker enabled state."""
-            return int(self._resource.query(f":CALC:MARK{self._n}:STAT?")) == 1
+            return int(self._resource.query(f":CALC:MARK{self._n}:STAT?").strip()) == 1
 
         @enabled.setter
         def enabled(self, enabled: bool):
@@ -377,7 +377,7 @@ class SSA3000X(MessageResource):
         @property
         def trace(self) -> int:
             """Get which trance this marker is associated with."""
-            return int(self._resource.query(f":CALC:MARK{self._n}:TRAC?"))
+            return int(self._resource.query(f":CALC:MARK{self._n}:TRAC?").strip())
 
         @enabled.setter
         def trace(self, trace: int):
@@ -392,7 +392,7 @@ class SSA3000X(MessageResource):
         def x(self) -> float:
             """Gets the current x value of the marker.
             If the current X axis is frequency, this is in Hz, otherwise it is in seconds."""
-            return int(self._resource.query(f":CALC:MARK{self._n}:X?"))
+            return int(self._resource.query(f":CALC:MARK{self._n}:X?").strip())
 
         @x.setter
         def x(self, x: float):
