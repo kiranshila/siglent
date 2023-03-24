@@ -101,6 +101,27 @@ class DetectionMode(Enum):
     QUASI = "QUAS"
 
 
+class MarkerMode(Enum):
+    """Marker function mode.
+
+    Values
+    ------
+    * POSITION - Selects a normal marker that can be positioned on a trace and from which
+     trace information will be generated.
+    * DELTA - Activates a pair of markers, one of which is fixed at the current marker
+     location. The other marker can then be moved around on the trace. The marker readout
+    shows the marker value which moves.
+    * FIXED - Active marker fixed at current position.
+    * OFF - Turns the designated marker off. If a marker is not active when the mode is queried,
+    “off” will be returned
+    """
+
+    POSITION = "POS"
+    DELTA = "DELT"
+    FIXED = "FIX"
+    OFF = "OFF"
+
+
 class SSA3000X(MessageResource):
     """The class to control a SSA3000X-Series spectrum analyzer."""
 
@@ -311,3 +332,74 @@ class SSA3000X(MessageResource):
                 header_fmt="empty",
                 data_points=NUM_DATA_POINTS,
             )
+
+    # ----- Marker -----
+
+    def clear_markers(self):
+        """Turns off all markers"""
+        self._resource.write(":CALC:MARK:AOFF")
+
+    def marker(self, marker: int) -> "Marker":
+        """Get the marker object from the SA."""
+        assert 1 <= marker <= 8, "Marker number is 1-8"
+        return self.Marker(self, marker)
+
+    class Marker:
+        """The marker object for one of the eight available markers."""
+
+        def __init__(self, parent: "SSA3000X", n: int):
+            self._n = n
+            self._parent = parent
+            self._resource = parent._resource
+
+        @property
+        def enabled(self) -> bool:
+            """Get the marker enabled state."""
+            return int(self._resource.query(f":CALC:MARK{self._n}:STAT?")) == 1
+
+        @enabled.setter
+        def enabled(self, enabled: bool):
+            """Set the marker enabled state."""
+            self.resource.write(f":CALC:MARK{self._n}:STAT {int(enabled)}")
+
+        @property
+        def mode(self) -> MarkerMode:
+            """Get the current marker mode."""
+            return MarkerMode(
+                self._resource.query(f":CALC:MARK{self._n}:MODE?").strip()
+            )
+
+        @mode.setter
+        def mode(self, mode: MarkerMode):
+            """Set the marker mode."""
+            self.resource.write(f":CALC:MARK{self._n}:MODE {mode.value}")
+
+        @property
+        def trace(self) -> int:
+            """Get which trance this marker is associated with."""
+            return int(self._resource.query(f":CALC:MARK{self._n}:TRAC?"))
+
+        @enabled.setter
+        def trace(self, trace: int):
+            """Set which trace this marker is on."""
+            self.resource.write(f":CALC:MARK{self._n}:TRAC {trace}")
+
+        def peak(self):
+            """Performs a peak search based on the current search mode settings"""
+            self._resource.write(f":CALC:MARK{self._n}:MAX")
+
+        @property
+        def x(self) -> float:
+            """Gets the current x value of the marker.
+            If the current X axis is frequency, this is in Hz, otherwise it is in seconds."""
+            return int(self._resource.query(f":CALC:MARK{self._n}:X?"))
+
+        @x.setter
+        def x(self, x: float):
+            """Sets the x value of the marker in either Hz or s."""
+            self._resource.write(f":CALC:MARK{self._n}:X {x}")
+
+        @property
+        def y(self) -> float:
+            """Gets the current y value of the marker."""
+            return int(self._resource.query(f":CALC:MARK{self._n}:Y?"))
