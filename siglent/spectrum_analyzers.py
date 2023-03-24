@@ -392,7 +392,7 @@ class SSA3000X(MessageResource):
         def x(self) -> float:
             """Gets the current x value of the marker.
             If the current X axis is frequency, this is in Hz, otherwise it is in seconds."""
-            return int(self._resource.query(f":CALC:MARK{self._n}:X?").strip())
+            return float(self._resource.query(f":CALC:MARK{self._n}:X?").strip())
 
         @x.setter
         def x(self, x: float):
@@ -402,4 +402,4 @@ class SSA3000X(MessageResource):
         @property
         def y(self) -> float:
             """Gets the current y value of the marker."""
-            return int(self._resource.query(f":CALC:MARK{self._n}:Y?"))
+            return float(self._resource.query(f":CALC:MARK{self._n}:Y?").strip())
